@@ -1,0 +1,5 @@
+.pdf2zh_home/
+__pycache__/
+translated/
+empty_test/
+*.pyc
