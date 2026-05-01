@@ -100,7 +100,7 @@ python .\translate_pdf2zh.py "D:\papers" -r -o "D:\papers_zh" -s bing -t 1
 
 ```cmd
 set DEEPSEEK_API_KEY=你的DeepSeek_API_Key
-set DEEPSEEK_MODEL=deepseek-chat
+set DEEPSEEK_MODEL=deepseek-v4-flash
 ```
 
 再运行翻译:
@@ -119,10 +119,23 @@ python .\translate_pdf2zh.py "D:\test_API\PDF_work" -r -o "D:\test_API\translate
 
 ```cmd
 setx DEEPSEEK_API_KEY "你的DeepSeek_API_Key"
-setx DEEPSEEK_MODEL "deepseek-chat"
+setx DEEPSEEK_MODEL "deepseek-v4-flash"
 ```
 
 使用 `setx` 后，需要关闭当前 CMD，重新打开一个新的 CMD 才会生效。
+
+DeepSeek API 常见模型:
+
+- `deepseek-v4-flash`: 速度更快、成本更低，适合批量 PDF 翻译
+- `deepseek-v4-pro`: 能力更强，适合质量要求更高的翻译
+- `deepseek-chat`: 旧模型名，将在 2026-07-24 停用
+- `deepseek-reasoner`: 旧推理模型名，将在 2026-07-24 停用；PDF 翻译一般不需要推理模型
+
+批量翻译建议优先使用:
+
+```cmd
+set DEEPSEEK_MODEL=deepseek-v4-flash
+```
 
 ### 其他常见服务配置
 
