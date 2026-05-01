@@ -64,6 +64,61 @@ python .\translate_pdf2zh.py "D:\papers" -s bing
 python .\translate_pdf2zh.py "D:\papers" -s deepl
 python .\translate_pdf2zh.py "D:\papers" -s openai
 python .\translate_pdf2zh.py "D:\papers" -s ollama
+python .\translate_pdf2zh.py "D:\papers" -s deepseek
 ```
 
 不同服务可能需要网络或 API Key。
+
+### DeepSeek API
+
+先在 CMD 里设置 DeepSeek API Key:
+
+```cmd
+set DEEPSEEK_API_KEY=你的DeepSeek_API_Key
+set DEEPSEEK_MODEL=deepseek-chat
+```
+
+再运行翻译:
+
+```cmd
+python .\translate_pdf2zh.py "D:\papers" -s deepseek
+```
+
+递归翻译文件夹并指定输出目录:
+
+```cmd
+python .\translate_pdf2zh.py "D:\test_API\PDF_work" -r -o "D:\test_API\translate" -s deepseek
+```
+
+如果想长期保存环境变量，使用 `setx`:
+
+```cmd
+setx DEEPSEEK_API_KEY "你的DeepSeek_API_Key"
+setx DEEPSEEK_MODEL "deepseek-chat"
+```
+
+使用 `setx` 后，需要关闭当前 CMD，重新打开一个新的 CMD 才会生效。
+
+### 其他常见服务配置
+
+DeepL:
+
+```cmd
+set DEEPL_AUTH_KEY=你的DeepL_API_Key
+python .\translate_pdf2zh.py "D:\papers" -s deepl
+```
+
+OpenAI:
+
+```cmd
+set OPENAI_API_KEY=你的OpenAI_API_Key
+set OPENAI_MODEL=gpt-4o-mini
+python .\translate_pdf2zh.py "D:\papers" -s openai
+```
+
+Ollama:
+
+```cmd
+set OLLAMA_MODEL=gemma2
+python .\translate_pdf2zh.py "D:\papers" -s ollama
+```
