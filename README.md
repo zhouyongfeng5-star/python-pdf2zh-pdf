@@ -69,6 +69,31 @@ python .\translate_pdf2zh.py "D:\papers" -s deepseek
 
 不同服务可能需要网络或 API Key。
 
+### 大批量翻译建议
+
+`google` 使用的是网页翻译接口，不是正式的 Google Cloud Translation API。大批量翻译长 PDF 时可能遇到:
+
+- `list index out of range`
+- `502 Server Error: Bad Gateway`
+- `ProxyError`
+- `Response ended prematurely`
+
+这些通常表示 Google 网页接口返回异常、被限流、代理连接中断，或某些文本片段没有返回可解析的翻译结果。
+
+如果翻译很多页，建议降低线程数:
+
+```cmd
+python .\translate_pdf2zh.py "D:\papers" -r -o "D:\papers_zh" -s google -t 1
+```
+
+也可以优先尝试 `bing`:
+
+```cmd
+python .\translate_pdf2zh.py "D:\papers" -r -o "D:\papers_zh" -s bing -t 1
+```
+
+如果有 API Key，推荐使用 `deepseek`、`openai` 或 `deepl`，稳定性通常比网页翻译接口更好。
+
 ### DeepSeek API
 
 先在 CMD 里设置 DeepSeek API Key:
